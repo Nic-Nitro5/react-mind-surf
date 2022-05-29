@@ -42,17 +42,17 @@ const Navbar = (props: {name: string, setName: (name: string) => void}) => {
     }
 
     return(
-      <nav className="navbar navbar-expand-lg bg-violet-gradient box-shadow">
-        <div className="container-fluid">
-            <Link to="/" className="navbar-brand text-white">Navbar</Link>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-                {menu}
+        <nav className="navbar navbar-expand-lg bg-violet-gradient box-shadow">
+            <div className="container-fluid">
+                <Link to="/" className="navbar-brand text-white">Navbar</Link>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    {menu}
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
     );
 };
 

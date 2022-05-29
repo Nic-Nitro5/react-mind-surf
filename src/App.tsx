@@ -13,6 +13,7 @@ function App() {
     useEffect(() => {
         (
             async () => {
+      debugger
                 const response = await fetch('http://localhost:8000/api/user', {
                     method: 'GET',
                     headers: {'Content-Type': 'application/json'},
@@ -21,7 +22,11 @@ function App() {
 
                 const content = await response.json();
 
-                setName(content.name);
+                if(content.message === 'unauthorized'){
+                  setName('');
+                }else{
+                  setName(content.name);
+                }
             }
         )();
     });

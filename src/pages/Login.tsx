@@ -4,10 +4,18 @@ import { Navigate } from 'react-router-dom';
 const Login = (props: {setName: (name: string) => void}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    let [rememberme, setRememberMe] = useState('');
+
     const [navigate, setNavigate] = useState(false);
 
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
+       
+        // Set the remeber me value
+        let remembermeval = 0;
+        if(rememberme === 'on'){
+            remembermeval = 1;
+        }
 
         const response = await fetch('http://localhost:8000/api/login', {
             method: 'POST',
@@ -15,7 +23,8 @@ const Login = (props: {setName: (name: string) => void}) => {
             credentials: 'include',
             body: JSON.stringify({
                 email, 
-                password
+                password,
+                remembermeval
             })
         });
 
@@ -51,7 +60,9 @@ const Login = (props: {setName: (name: string) => void}) => {
 
                     <div className="checkbox mb-3">
                         <label>
-                            <input type="checkbox" value="remember-me" /> Remember me
+                            <input type="checkbox"
+                                onChange={e => setRememberMe(e.target.value)}
+                            /> Remember me
                         </label>
                     </div>
                     <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
